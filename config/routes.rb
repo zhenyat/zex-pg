@@ -24,6 +24,7 @@ Rails.application.routes.draw do
       resources :samples
         resources :coins
         resources :coin_nicknames
+        resources :pairs
       # Add new admin resources before this line
     end
 

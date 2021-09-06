@@ -35,6 +35,8 @@
               = link_to t(Coin.model_name.human(count: 2)), admin_coins_path
             .dropdown-item
               = link_to t(CoinNickname.model_name.human(count: 2)), admin_coin_nicknames_path
+            .dropdown-item
+              = link_to t(Pair.model_name.human(count: 2)), admin_pairs_path
             .dropdown-divider
             .dropdown-item
               = link_to t(:dummy), '#'

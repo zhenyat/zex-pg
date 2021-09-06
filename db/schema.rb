@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_06_070306) do
+ActiveRecord::Schema.define(version: 2021_09_06_103600) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,27 @@ ActiveRecord::Schema.define(version: 2021_09_06_070306) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["code"], name: "index_coins_on_code", unique: true
     t.index ["name"], name: "index_coins_on_name", unique: true
+  end
+
+  create_table "pairs", force: :cascade do |t|
+    t.bigint "base_id"
+    t.bigint "quote_id"
+    t.string "name", null: false
+    t.string "code", null: false
+    t.integer "level", limit: 2, default: 0, null: false
+    t.integer "decimal_places"
+    t.decimal "min_price", precision: 10, scale: 5
+    t.integer "max_price"
+    t.decimal "min_amount", precision: 10, scale: 5
+    t.integer "hidden", limit: 2
+    t.decimal "fee", precision: 5, scale: 2
+    t.integer "status", limit: 2, default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["base_id"], name: "index_pairs_on_base_id"
+    t.index ["code"], name: "index_pairs_on_code", unique: true
+    t.index ["name"], name: "index_pairs_on_name", unique: true
+    t.index ["quote_id"], name: "index_pairs_on_quote_id"
   end
 
   create_table "users", force: :cascade do |t|
