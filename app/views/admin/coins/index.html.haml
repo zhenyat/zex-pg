@@ -9,7 +9,7 @@
       %th= t 'actions.actions'
 
   %tbody
-    - @coins.each do |coin|
+    - @coins.order(:name).each do |coin|
       %tr
         %td= coin.name
         %td= coin.code
