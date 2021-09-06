@@ -32,10 +32,9 @@
             = t(:data)
           .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
             .dropdown-item
-              = link_to t(:dummy), '#'
-              /= link_to t(Category.model_name.human(count: 2)),  admin_categories_path
+              = link_to t(Coin.model_name.human(count: 2)), admin_coins_path
             .dropdown-item
-              = link_to t(Sample.model_name.human(count: 2)), admin_samples_path
+              -# = link_to t(Sample.model_name.human(count: 2)), admin_samples_path
             .dropdown-divider
             .dropdown-item
               = link_to t(:dummy), '#'

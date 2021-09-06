@@ -1,0 +1,38 @@
+.container
+  %h1= t Coin.model_name.human
+  %table.table.table-striped
+    %tbody
+      - @coin.attributes.each do |key, value|
+        - unless key == 'id' || key.include?('digest') || key == 'created_at' || key == 'updated_at'
+          %tr
+            - if key == 'status'
+              %td= t 'status.status'
+              %td= status_mark @coin.status
+            - elsif key == 'ancestry'
+              - if @coin.parent.present?
+                %td= t 'tree.parent'
+                - if Coin.column_names.include? 'title'
+                  %td= "#{@coin.parent.title} (id: #{@coin.ancestry})"
+                - elsif Coin.column_names.include? 'name'
+                  %td= "#{@coin.parent.name} (id: #{@coin.ancestry})"
+                - else
+                  %td= "#{@coin.ancestry})"
+              - if @coin.children.present?
+                %tr
+                  %td= t 'tree.children'
+                  %td
+                    - @coin.children.each do |child|
+                      - if Coin.column_names.include? 'title'
+                        = "#{child.title} (id=#{child.id})"
+                      - elsif Coin.column_names.include? 'name'
+                        = "#{child.name} (id=#{child.id})"
+                      - else
+                        = "#{child.id}"
+                      - unless child == @coin.children.last
+                        %br
+            - else
+              %td= t "activerecord.attributes.coin.#{key}"
+              %td= value
+      = render 'admin/shared/show_images', object: @coin
+  = render 'admin/shared/show_rich_text_content', object: @coin
+  = render 'admin/shared/show_actions', object: @coin
