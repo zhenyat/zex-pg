@@ -2,37 +2,10 @@
   %h1= t CoinNickname.model_name.human
   %table.table.table-striped
     %tbody
-      - @coin_nickname.attributes.each do |key, value|
-        - unless key == 'id' || key.include?('digest') || key == 'created_at' || key == 'updated_at'
-          %tr
-            - if key == 'status'
-              %td= t 'status.status'
-              %td= status_mark @coin_nickname.status
-            - elsif key == 'ancestry'
-              - if @coin_nickname.parent.present?
-                %td= t 'tree.parent'
-                - if CoinNickname.column_names.include? 'title'
-                  %td= "#{@coin_nickname.parent.title} (id: #{@coin_nickname.ancestry})"
-                - elsif CoinNickname.column_names.include? 'name'
-                  %td= "#{@coin_nickname.parent.name} (id: #{@coin_nickname.ancestry})"
-                - else
-                  %td= "#{@coin_nickname.ancestry})"
-              - if @coin_nickname.children.present?
-                %tr
-                  %td= t 'tree.children'
-                  %td
-                    - @coin_nickname.children.each do |child|
-                      - if CoinNickname.column_names.include? 'title'
-                        = "#{child.title} (id=#{child.id})"
-                      - elsif CoinNickname.column_names.include? 'name'
-                        = "#{child.name} (id=#{child.id})"
-                      - else
-                        = "#{child.id}"
-                      - unless child == @coin_nickname.children.last
-                        %br
-            - else
-              %td= t "activerecord.attributes.coin_nickname.#{key}"
-              %td= value
-      = render 'admin/shared/show_images', object: @coin_nickname
-  = render 'admin/shared/show_rich_text_content', object: @coin_nickname
+      %tr
+        %td= "Coin"
+        %td= @coin_nickname.coin.code
+      %tr
+        %td= "Name"
+        %td= @coin_nickname.name
   = render 'admin/shared/show_actions', object: @coin_nickname

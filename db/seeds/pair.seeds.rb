@@ -69,7 +69,7 @@ begin
     ### Base Currency: AUD
     base_id = Coin.find_by(code: 'AUD').id
     puts "--- AUD: #{base_id}"
-    Pair.create base_id: base_id, quote_id: Coin.find_by(code: 'USD').id, name: 'aud_usd', code: 'AUD/USB', level: 'Major',
+    Pair.create base_id: base_id, quote_id: Coin.find_by(code: 'USD').id, name: 'aud_usd', code: 'AUD/USD', level: 'Major',
                 # decimal_places: 5, min_price: 0.5e0, max_price: 2, min_amount: 0.1e0,
                 hidden: 0, fee: 0.2e0, status: "archived"
     Pair.create base_id: base_id, quote_id: Coin.find_by(code: 'JPY').id, name: 'aud_jpy', code: 'AUD/JPY', level: 'Minor',
@@ -79,7 +79,7 @@ begin
                 ### Base Currency: NZD
     base_id = Coin.find_by(code: 'NZD').id
     puts "--- NZD: #{base_id}"
-    Pair.create base_id: base_id, quote_id: Coin.find_by(code: 'USD').id, name: 'nzd_usd', code: 'NZD/USB', level: 'Major',
+    Pair.create base_id: base_id, quote_id: Coin.find_by(code: 'USD').id, name: 'nzd_usd', code: 'NZD/USD', level: 'Major',
                 # decimal_places: 5, min_price: 0.5e0, max_price: 2, min_amount: 0.1e0,
                 hidden: 0, fee: 0.2e0, status: "archived"
     Pair.create base_id: base_id, quote_id: Coin.find_by(code: 'JPY').id, name: 'nzd_jpy', code: 'NZD/JPY', level: 'Minor',

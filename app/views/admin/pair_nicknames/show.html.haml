@@ -1,0 +1,11 @@
+.container
+  %h1= t PairNickname.model_name.human
+  %table.table.table-striped
+    %tbody
+      %tr
+        %td= "Pair"
+        %td= @pair_nickname.pair.code
+      %tr
+        %td= "Name"
+        %td= @pair_nickname.name
+  = render 'admin/shared/show_actions', object: @pair_nickname

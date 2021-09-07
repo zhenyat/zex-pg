@@ -1,7 +1,7 @@
 ################################################################################
 # Model:  CoinNickname
 #
-# Purpose: Currencies Nicknames
+# Purpose: Currency Nicknames
 #
 # CoinNickname attributes:
 #   coin_id - FK

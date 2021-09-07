@@ -6,8 +6,8 @@
 # Pair attributes:
 #   base_id        - FK
 #   quote_id       - FK
-#   name           - name:            string,  not NULL, unique
-#   code           - code:            string,  not NULL, unique
+#   name           - name:            string,  not NULL, unique ! Set automatically
+#   code           - code:            string,  not NULL, unique ! Set automatically
 #   level          - Liquidity Level: enum { Major (0) | Minor (1) | Exotic (2)}
 #   decimal_places - decimal_places:  integer
 #   min_price      - min_price:       decimal
@@ -31,7 +31,6 @@ class Pair < ApplicationRecord
   validates :name,  presence: true, uniqueness: true
   validates :code,  presence: true, uniqueness: true
 
-  # private
   def set_pair_code
     "#{base.code}/#{quote.code}"
   end
